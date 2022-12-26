@@ -22,14 +22,14 @@ function handleSymbol(symbol){
             flushOperation(parseInt(buffer));
             previousOperator = null;
             buffer = runningTotal;
-            runningTotal =0;
+            runningTotal = 0;
             break;
         case '←':
             if(buffer.length === 1) buffer = '0';
             else buffer = buffer.toString(0, buffer.length-1);
             break;
         case '+':
-        case '-':
+        case '−':
         case '÷':
         case '×':
             handleMath(symbol);
@@ -50,7 +50,7 @@ function handleMath(symbol){
 
 function flushOperation(intBuffer){
     if(previousOperator === '+') runningTotal += intBuffer;
-    else if(previousOperator === '-') runningTotal -= intBuffer;
+    else if(previousOperator === '−') runningTotal -= intBuffer;
     else if(previousOperator === '×') runningTotal *= intBuffer;
     else if(previousOperator === '÷') runningTotal /= intBuffer;
 }
